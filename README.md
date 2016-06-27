@@ -4,21 +4,20 @@ Directly publish your blog posts to GitHub Pages from the command line.
 
 ## How it works?
 
-- Head over [here](https://github.com/settings/tokens/new) and generate a new token with only `public_repo` scope selected.
-- For every github username you want to acess, create a file `~/.ghPublish` as following:
-    ```json
-    {
-        'MiteshNinja': '<api token here>',
-        'Computableverse': '<api token here>'
-    }
-    ```
+1. Head over [here](https://github.com/settings/tokens/new) and generate a new token with only `public_repo` scope selected.
+2. For every github username you want to acess, create a file `~/.ghPublish` as following:
+    - ```javascript
+      {
+          'MiteshNinja': '<api token here>',
+          'Computableverse': '<api token here>'
+      }
+      ```
     - You can make it `rw` only by you, using `chmod 600 ~/.ghPublish`
-- Write a blog post in markdown.
-- Rename the post appropriately to how you have Jekyll configured.
+3. Rename your blog post appropriately to how you have Jekyll configured.
     - Default is `YYYY-MM-DD-slugged-title-string`
-- Now read Usage below.
+5. Now read Usage below.
 
-## Usage - Simple
+### Usage - Simple
 
 Now that you have the file ready.
 
@@ -34,7 +33,7 @@ Now that you have the file ready.
 
 That's it. Your blog has been pushed live to `username.github.io`.
 
-## Usage - Detailed
+### Usage - Detailed
 
 ```
 $ python3 ghPublish --help
@@ -52,6 +51,11 @@ optional arguments:
 ```
 
 ---
+
+# Contributors
+
+Author: [Mitesh Shah](http://miteshshah.com)
+Please send a pull request, or file an issue!
 
 # License
 
