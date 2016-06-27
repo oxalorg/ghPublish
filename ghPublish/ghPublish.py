@@ -4,6 +4,7 @@ import requests
 import json
 import base64
 from ghPublish import preview
+from ghPublish import auth
 
 
 def preview_file(post):
@@ -35,15 +36,8 @@ class Publish:
         with open(os.path.abspath(self.fp)) as f:
             self.content_base64 = base64.b64encode(f.read().encode('utf-8'))
 
-        # Get config file
-        with open(os.path.join(os.path.expanduser('~'), '.ghPublish')) as f:
-            self.config = json.load(f)
-
     def get_auth_details(self):
-        return (self.owner, self.get_api_token())
-
-    def get_api_token(self):
-        return self.config[self.owner]
+        return auth.Authorization(self.owner).get_auth_details()
 
     def get_sha_blob(self):
         """
