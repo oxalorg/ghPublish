@@ -2,6 +2,12 @@
 
 Directly publish your blog posts to GitHub Pages from the command line.
 
+## Installation
+
+Install it directly from PyPI using `pip3`. Only supported on Python 3.x.
+
+`pip3 install ghPublish`
+
 ## How it works?
 
 1. Head over [here](https://github.com/settings/tokens/new) and generate a new token with only `public_repo` scope selected.
@@ -36,18 +42,26 @@ That's it. Your blog has been pushed live to `username.github.io`.
 ### Usage - Detailed
 
 ```
-$ python3 ghPublish --help
-usage: ghPublish.py [-h] (--preview | -u USER) -f FILE [-r REPO] [-l LOC]
+$ ghPublish --help
+usage: ghPublish [-h] (--preview | -u USER) -f FILE [-r REPO] [-l LOC]
 
-Publish your posts on GitHub pages.
+Directly publish your blog posts to GitHub Pages from the command line.
 
 optional arguments:
-  -h, --help             show this help message and exit
-  --preview              preview a blog post locally. (default: False)
-  -u USER, --user USER   hithub Username (default: None)
-  -f FILE, --file FILE   path to local file (default: None)
-  -r REPO, --repo REPO   optional repository (default: None)
-  -l LOC, --location LOC optional file path in repostiory (default: None)
+  -h, --help            show this help message and exit
+
+Required:
+  you can either preview the file, or supply a user to publish the file
+
+  --preview             preview a blog post locally. (default: False)
+  -u USER, --user USER  github username (default: None)
+  -f FILE, --file FILE  path to local file (default: None)
+
+Remote:
+  optional details for publshing to a custom location in a repository
+
+  -r REPO, --repo REPO  optional repository name (default: None)
+  -l LOC, --loc LOC     optional file path in repostiory (default: None)
 ```
 
 ---
