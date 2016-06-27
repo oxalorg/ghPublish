@@ -1,9 +1,9 @@
 import argparse
-import preview
 import os
 import requests
 import json
 import base64
+from ghPublish import preview
 
 
 def preview_file(post):
@@ -82,48 +82,3 @@ class Publish:
             return r.status_code, url
         except KeyError:
             return r.status_code, None
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='Publish your posts on GitHub pages.',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--preview',
-                       dest='prev',
-                       action='store_true',
-                       help='preview a blog post locally.')
-    group.add_argument('-u',
-                       '--user',
-                       dest='user',
-                       default=None,
-                       help='hithub Username')
-    parser.add_argument('-f',
-                        '--file',
-                        dest='file',
-                        required=True,
-                        help='path to local file')
-    parser.add_argument('-r',
-                        '--repo',
-                        dest='repo',
-                        default=None,
-                        help='optional repository')
-    parser.add_argument('-l',
-                        '--location',
-                        dest='loc',
-                        default=None,
-                        help='optional file path in repostiory')
-    args = parser.parse_args()
-
-    if args.prev:
-        preview_file(args.file)
-    elif args.user:
-        status, url = Publish(args.user, args.file, args.repo,
-                              args.loc).publish_post()
-        if status in (200, 201):
-            print('Sucessfuly published at {}'.format(url))
-        else:
-            print(
-                'Error occurred! Contact the author at: mitesh@miteshshah.com')
-    else:
-        print("Run ghPublish --help for usage information")
