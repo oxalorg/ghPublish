@@ -23,14 +23,14 @@ class Authorization():
 
     def get_api_token(self):
         try:
-            return self._get_config()[self.user]
+            return self._get_config()['tokens'][self.user]
         except KeyError:
             return self._update_config()
 
     def _get_config(self):
         try:
             if not os.path.exists(self.config_file):
-                config = {}
+                config = {"tokens": {}, "defaults": {}, "settings": {}}
                 with open(self.config_file, 'a') as f:
                     json.dump(config, f)
             else:
@@ -64,14 +64,18 @@ class Authorization():
             raise SystemExit('Bad credentials!')
         elif r.status_code == 422 and rj['message'].lower(
         ) == 'validation failed':
-            raise SystemExit('Validation has failed!')
+            raise SystemExit(
+                'Validation has failed!\nThe response received was:\n {}'.format(
+                    rj))
         else:
-            raise SystemExit('An error has occurred while creating a token!')
+            raise SystemExit(
+                'An error has occurred while creating a token!\nThe response received was:\n {}'.format(
+                    rj))
 
     def _update_config(self):
         config = self._get_config()
         token = self._request_access_token()
-        config[self.user] = token
+        config['tokens'][self.user] = token
         with open(self.config_file, 'w') as f:
             json.dump(config, f)
         return token
