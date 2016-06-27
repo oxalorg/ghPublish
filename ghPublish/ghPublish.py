@@ -3,18 +3,7 @@ import os
 import requests
 import json
 import base64
-from ghPublish import preview
 from ghPublish import auth
-
-
-def preview_file(post):
-    """
-    Opens the rendered markdown file (as html) locally in a browser.
-    """
-    with open(post) as f:
-        content = f.read()
-    title = os.path.basename(post)
-    preview.Preview(title, content).preview()
 
 
 class Publish:

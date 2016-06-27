@@ -8,6 +8,16 @@ from pygments.formatters import html
 from ghPublish import base_html
 
 
+def preview_file(post):
+    """
+    Opens the rendered markdown file (as html) locally in a browser.
+    """
+    with open(post) as f:
+        content = f.read()
+    title = os.path.basename(post)
+    Preview(title, content).preview()
+
+
 class HighlightRenderer(mistune.Renderer):
     def block_code(self, code, lang):
         if not lang:

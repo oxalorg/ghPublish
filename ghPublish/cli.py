@@ -1,5 +1,6 @@
 import argparse
-from ghPublish.ghPublish import preview_file, Publish
+from ghPublish.ghPublish import Publish
+from ghPublish import preview
 
 
 def cli():
@@ -40,7 +41,7 @@ def cli():
     args = parser.parse_args()
 
     if args.prev:
-        preview_file(args.file)
+        preview.preview_file(args.file)
     elif args.user:
         status, url = Publish(args.user, args.file, args.repo,
                               args.loc).publish_post()
