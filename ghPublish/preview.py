@@ -5,6 +5,7 @@ import mistune
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import html
+from ghPublish import base_html
 
 
 class HighlightRenderer(mistune.Renderer):
@@ -18,14 +19,10 @@ class HighlightRenderer(mistune.Renderer):
 
 
 class Preview:
-    basedir = os.path.abspath(os.path.dirname(__file__))
-    base_html = os.path.abspath(os.path.join(basedir, 'base.html'))
-
     def __init__(self, title, content):
         self.title = title
         self.content = content
-        with open(self.base_html) as f:
-            self.base_template = f.read()
+        self.base_template = base_html.html
         self.template = Template(self.base_template)
 
     def render(self):
