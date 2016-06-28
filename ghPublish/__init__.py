@@ -1,2 +1,2 @@
 from ghPublish.cli import cli
-_VERSION = '0.8.2'
+_VERSION = '1.0.0'
