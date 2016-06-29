@@ -15,7 +15,7 @@ class Publish:
         if repo:
             self.repo = repo
         else:
-            self.repo = owner + '.github.io'
+            self.repo = self.owner + '.github.io'
         self.fp = fp
         self.api_url = 'https://api.github.com/repos/{owner}/{repo}/contents/{path}'.format(
             owner=self.owner, repo=self.repo,
