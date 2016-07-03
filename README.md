@@ -2,13 +2,22 @@
 
 Directly publish your blog posts to GitHub Pages from the command line.
 
+## Overview
+
+This is a simple command line tool, written in pure python, to allow users to start publishing posts on their jekyll/github powered blogs. It uses the GitHub api and hence does not need git and jekyll installed.
+
+It supports multiple users, custom repositories, and a lot more to come. 
+
 ## Installation
 
 Install it directly from PyPI using `pip3`. Only supported on Python 3.x.
 
 `pip3 install ghPublish`
 
-## Quickstart
+
+## Usage
+
+### Quickstart
 
 - Write a top kek blog post, preferably in markdown or html.
 - Rename your blog post appropriately to how you have Jekyll configured.
@@ -51,14 +60,19 @@ Remote:
   -l LOC, --loc LOC     optional file path in repostiory (default: None)
 ```
 
----
+## Extra
 
-# Contributors
+### Dependencies
 
-Author: [Mitesh Shah](http://miteshshah.com)
-Please send a pull request, or file an issue!
+* mistune - pure python markdown renderer
+* requests - http request library
+* pygments
 
-# License
+### Contributors
+
+Author: [Mitesh Shah](http://miteshshah.com)  
+
+### License
 
 MIT License
 
