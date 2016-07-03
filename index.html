@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>ghPublish - command line blogging</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/MiteshNinja/sakura/master/sakura.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+<div id="TOC">
+    <p>
+        <strong>Table of Contents:</strong>
+    </p>
+<ul>
+<li><a href="#ghpublish"><span class="toc-section-number">1</span> ghPublish</a><ul>
+<li><a href="#overview"><span class="toc-section-number">1.1</span> Overview</a></li>
+<li><a href="#installation"><span class="toc-section-number">1.2</span> Installation</a></li>
+<li><a href="#usage"><span class="toc-section-number">1.3</span> Usage</a><ul>
+<li><a href="#quickstart"><span class="toc-section-number">1.3.1</span> Quickstart</a></li>
+<li><a href="#slowstart"><span class="toc-section-number">1.3.2</span> Slowstart</a></li>
+</ul></li>
+<li><a href="#extra"><span class="toc-section-number">1.4</span> Extra</a><ul>
+<li><a href="#dependencies"><span class="toc-section-number">1.4.1</span> Dependencies</a></li>
+<li><a href="#contributors"><span class="toc-section-number">1.4.2</span> Contributors</a></li>
+<li><a href="#license"><span class="toc-section-number">1.4.3</span> License</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="ghpublish"><span class="header-section-number">1</span> ghPublish</h1>
+<p>Directly publish your blog posts to GitHub Pages from the command line.</p>
+<p>
+    <a href="https://github.com/miteshninja/ghPublish">view on github</a> | <a href="https://miteshninja.github.io/ghPublish">project home page</a>
+</p>
+<h2 id="overview"><span class="header-section-number">1.1</span> Overview</h2>
+<p>This is a simple command line tool, written in pure python, to allow users to start publishing posts on their jekyll/github powered blogs. It uses the GitHub api and hence does not need git and jekyll installed.</p>
+<p>It supports multiple users, custom repositories, and a lot more to come.</p>
+<h2 id="installation"><span class="header-section-number">1.2</span> Installation</h2>
+<p>Install it directly from PyPI using <code>pip3</code>. Only supported on Python 3.x.</p>
+<p><code>pip3 install ghPublish</code></p>
+<h2 id="usage"><span class="header-section-number">1.3</span> Usage</h2>
+<h3 id="quickstart"><span class="header-section-number">1.3.1</span> Quickstart</h3>
+<ul>
+<li>Write a top kek blog post, preferably in markdown or html.</li>
+<li>Rename your blog post appropriately to how you have Jekyll configured.
+<ul>
+<li>Default is <code>YYYY-MM-DD-slugged-title-string.md</code></li>
+</ul></li>
+</ul>
+<p>Now that you have the file ready.</p>
+<ol style="list-style-type: decimal">
+<li>You need to <strong>preview</strong> the file <em>locally</em>.
+<ul>
+<li><code>ghPublish --preview -f &lt;path to file&gt;</code></li>
+<li>This will render your markdown file to html and automagically open in le browser.</li>
+</ul></li>
+<li><strong>Publish</strong> the changes to github.
+<ul>
+<li><code>ghPublish -u &lt;Username&gt; -f &lt;path to file&gt;</code></li>
+<li>This works for both adding new files, and updating existing ones.</li>
+<li>Password is asked only once, then a token is generated and stored in a config file.</li>
+</ul></li>
+</ol>
+<p>That's it. Your blog has been pushed live to <code>&lt;username&gt;.github.io</code>.</p>
+<h3 id="slowstart"><span class="header-section-number">1.3.2</span> Slowstart</h3>
+<pre><code>$ ghPublish --help
+usage: ghPublish [-h] (--preview | -u USER) -f FILE [-r REPO] [-l LOC]
+
+Directly publish your blog posts to GitHub Pages from the command line.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Required:
+  you can either preview the file, or supply a user to publish the file
+
+  --preview             preview a blog post locally. (default: False)
+  -u USER, --user USER  github username (default: None)
+  -f FILE, --file FILE  path to local file (default: None)
+
+Remote:
+  optional details for publshing to a custom location in a repository
+
+  -r REPO, --repo REPO  optional repository name (default: None)
+  -l LOC, --loc LOC     optional file path in repostiory (default: None)</code></pre>
+<h2 id="extra"><span class="header-section-number">1.4</span> Extra</h2>
+<h3 id="dependencies"><span class="header-section-number">1.4.1</span> Dependencies</h3>
+<ul>
+<li>mistune - pure python markdown renderer</li>
+<li>requests - http request library</li>
+<li>pygments</li>
+</ul>
+<h3 id="contributors"><span class="header-section-number">1.4.2</span> Contributors</h3>
+<p>Author: <a href="http://miteshshah.com">Mitesh Shah</a></p>
+<h3 id="license"><span class="header-section-number">1.4.3</span> License</h3>
+<p>MIT License</p>
+<p>Copyright (c) 2016 Mitesh Shah</p>
+</body>
+</html>
